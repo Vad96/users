@@ -1,11 +1,16 @@
-const initialState = { users: ['ld'], pickedUsers: ['ldsk'] };
+import { GET_USERS, ADD_USER } from "../types/types";
+
+const initialState = { users: [], pickedUsers: [] };
 
 export function usersReducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_USERS":
+    case GET_USERS:
       return action.payload;
-    case "ADD_USER":
-      return action.payload;
+    case ADD_USER:
+      return {
+        ...state,
+        pickedUsers: state.pickedUsers.concat([action.payload]),
+      };
     default:
       return state;
   }
