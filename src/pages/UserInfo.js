@@ -6,7 +6,7 @@ function UserInfo() {
   const { id } = useParams();
   const { users } = useSelector((state) => state.users);
   const user = users.results.find((item) => item.id.name === id);
-  console.log(user);
+//   console.log(user);
   return (
     <main className="main">
       <ul>
