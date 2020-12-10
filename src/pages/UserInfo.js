@@ -1,7 +1,7 @@
 import React from "react";
 
 function UserInfo() {
-  return <div>Page not found</div>;
+  return <main className="main">user info</main>;
 }
 
 export default UserInfo;

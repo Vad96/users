@@ -1,3 +1,23 @@
-.App-header {
-    color: red;
+* {
+  margin: 0;
+  padding: 0;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+@import "./styles//header";
+@import "./styles/footer";
+@import "./styles//home";
