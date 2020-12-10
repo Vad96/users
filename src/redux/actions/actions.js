@@ -1,4 +1,4 @@
-import { ADD_USER, GET_USERS } from "./types";
+import { ADD_USER, GET_USERS } from "../types/types";
 
 export function addUser(user) {
   return {
@@ -7,7 +7,7 @@ export function addUser(user) {
   };
 }
 
-export function getPosts() {
+export function getUsers() {
   return async (dispatch) => {
     const response = await fetch("https://randomuser.me/api/?results=20");
     const json = await response.json();
