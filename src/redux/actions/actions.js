@@ -1,4 +1,10 @@
-import { ADD_USER, GET_USERS, USERS_COUNT } from "../types/types";
+import {
+  ADD_USER,
+  GET_USERS,
+  USERS_COUNT,
+  SHOW_LOADER,
+  HIDE_LOADER,
+} from "../types/types";
 
 export function addUser(user) {
   return {
@@ -7,14 +13,28 @@ export function addUser(user) {
   };
 }
 
+export function showLoader(user) {
+  return {
+    type: SHOW_LOADER,
+  };
+}
+
+export function hideLoader() {
+  return {
+    type: HIDE_LOADER,
+  };
+}
+
 export function getUsers(count) {
   return async (dispatch) => {
+    dispatch(showLoader());
     const response = await fetch(`https://randomuser.me/api/?results=${count}`);
     const json = await response.json();
     dispatch({
       type: GET_USERS,
       payload: json,
     });
+    dispatch(hideLoader());
   };
 }
 

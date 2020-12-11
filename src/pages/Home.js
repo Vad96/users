@@ -10,6 +10,7 @@ function Home() {
   const { users, pickedUsers, usersCount } = useSelector(
     (state) => state.users
   );
+  const { loading } = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +20,8 @@ function Home() {
   return (
     <main className="main">
       <div className="usersList">
-      {getTime()}
-        {users.results &&
+        {getTime()}
+        {users.results && !loading ? 
           users.results.map((user) => {
             return (
               <div key={user.email}>
@@ -33,7 +34,7 @@ function Home() {
                 <button onClick={() => dispatch(addUser(user))}>Add</button>
               </div>
             );
-          })}
+          }) : <div>loading...</div>}
         <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
       </div>
 
