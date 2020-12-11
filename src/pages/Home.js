@@ -46,7 +46,13 @@ function Home() {
                       {user.name.first} {user.name.last}
                     </div>
                   </Link>
-                  <button onClick={() => dispatch(addUser(user))}>Add</button>
+                  <button
+                    onClick={() =>
+                      dispatch(addUser({ ...user, added: getTime() }))
+                    }
+                  >
+                    Add
+                  </button>
                 </div>
               );
             })
@@ -67,6 +73,7 @@ function Home() {
                       {user.name.first} {user.name.last}
                     </div>
                   </Link>
+                  <div>Added: {user.added}</div>
                 </div>
               );
             })
