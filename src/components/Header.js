@@ -20,7 +20,7 @@ function Header(props) {
     <header className="header">
       Header
       <div>{time}</div>
-      Users amount: {pickedUsers && pickedUsers.length}
+      Users count: {pickedUsers && pickedUsers.length}
     </header>
   );
 }

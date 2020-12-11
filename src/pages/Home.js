@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUsers, addUser, loadMoreUsers } from "../redux/actions/actions";
 import User from "../components/User";
+import Search from "../components/Search";
 import getTime from "../helpers/getTime";
 
 function Home() {
@@ -20,6 +21,7 @@ function Home() {
 
   return (
     <>
+      <Search />
       <main className="main">
         <button
           style={{ display: "inline-block" }}
@@ -46,6 +48,13 @@ function Home() {
                       {user.name.first} {user.name.last}
                     </div>
                   </Link>
+
+                  {/* {pickedUsers &&
+                    pickedUsers.filter((pickedUser) => {
+                      if (user.id.name == pickedUser.id.name) {
+                        return <div>hell</div>;
+                      }
+                    })} */}
                   <button
                     onClick={() =>
                       dispatch(addUser({ ...user, added: getTime() }))

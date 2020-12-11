@@ -4,6 +4,7 @@ import {
   USERS_COUNT,
   SHOW_LOADER,
   HIDE_LOADER,
+  SEARCH_QUERY,
 } from "../types/types";
 
 export function addUser(user) {
@@ -41,5 +42,12 @@ export function getUsers(count) {
 export function loadMoreUsers() {
   return {
     type: USERS_COUNT,
+  };
+}
+
+export function search(query) {
+  return {
+    type: SEARCH_QUERY,
+    payload: query,
   };
 }
