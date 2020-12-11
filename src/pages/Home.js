@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUsers, loadMoreUsers } from "../redux/actions/actions";
+import { getUsers, addUser, loadMoreUsers } from "../redux/actions/actions";
 import User from "../components/User";
 
 function Home() {
-  const { users, pickedUsers, usersCount } = useSelector((state) => state.users);
+  const { users, pickedUsers, usersCount } = useSelector(
+    (state) => state.users
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,16 +20,36 @@ function Home() {
         {users.results &&
           users.results.map((user) => {
             return (
-              <Link to={`/user/${user.id.name}`} key={user.email}>
-                <img src={user.picture.medium} alt={user.name.first} />
-                <div>
-                  {user.name.first} {user.name.last}
-                </div>
-                <button>Add</button>
-              </Link>
+              <div key={user.email}>
+                <Link to={`/user/${user.id.name}`}>
+                  <img src={user.picture.medium} alt={user.name.first} />
+                  <div>
+                    {user.name.first} {user.name.last}
+                  </div>
+                </Link>
+                <button onClick={() => dispatch(addUser(user))}>Add</button>
+              </div>
             );
           })}
-          <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
+        <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
+      </div>
+      <div className="pickedUsers">
+        {pickedUsers ? (
+          pickedUsers.map((user) => {
+            return (
+              <div key={user.email}>
+                <Link to={`/user/${user.id.name}`}>
+                  <img src={user.picture.medium} alt={user.name.first} />
+                  <div>
+                    {user.name.first} {user.name.last}
+                  </div>
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <div>No users yet...</div>
+        )}
       </div>
     </main>
   );
