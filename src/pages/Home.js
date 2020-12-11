@@ -13,7 +13,11 @@ function Home() {
     (state) => state.users
   );
   const { loading } = useSelector((state) => state.loading);
+  const { text } = useSelector((state) => state.text);
   const dispatch = useDispatch();
+
+  const searched = (text) => (user) =>
+    `${user.name.first}${user.name.last}`.toLowerCase().includes(text);
 
   useEffect(() => {
     dispatch(getUsers(usersCount));
@@ -39,7 +43,7 @@ function Home() {
         </button>
         <div className={activeTab === "1" ? "usersList" : "hideTab"}>
           {users.results && !loading ? (
-            users.results.map((user) => {
+            users.results.filter(searched(text)).map((user) => {
               return (
                 <div key={user.email}>
                   <Link to={`/user/${user.id.name}`}>
@@ -73,7 +77,7 @@ function Home() {
 
         <div className={activeTab === "2" ? "pickedUsers" : "hideTab"}>
           {pickedUsers ? (
-            pickedUsers.map((user) => {
+            pickedUsers.filter(searched(text)).map((user) => {
               return (
                 <div key={user.email}>
                   <Link to={`/user/${user.id.name}`}>

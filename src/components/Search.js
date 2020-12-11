@@ -5,7 +5,6 @@ import { search } from "../redux/actions/actions";
 const Search = () => {
   const dispatch = useDispatch();
   const { text } = useSelector((state) => state.text);
-  console.log(text);
 
   const handleChange = (e) => {
     dispatch(search(e.target.value.trim()));
