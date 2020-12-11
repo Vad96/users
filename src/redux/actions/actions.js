@@ -7,9 +7,9 @@ export function addUser(user) {
   };
 }
 
-export function getUsers() {
+export function getUsers(count) {
   return async (dispatch) => {
-    const response = await fetch("https://randomuser.me/api/?results=20");
+    const response = await fetch(`https://randomuser.me/api/?results=${count}`);
     const json = await response.json();
     dispatch({
       type: GET_USERS,
@@ -21,6 +21,5 @@ export function getUsers() {
 export function loadMoreUsers() {
   return {
     type: USERS_COUNT,
-    // payload: count,
   };
 }

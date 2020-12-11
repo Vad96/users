@@ -5,12 +5,12 @@ import { getUsers, loadMoreUsers } from "../redux/actions/actions";
 import User from "../components/User";
 
 function Home() {
-  const { users, pickedUsers } = useSelector((state) => state.users);
+  const { users, pickedUsers, usersCount } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+    dispatch(getUsers(usersCount));
+  }, [usersCount]);
 
   return (
     <main className="main">
