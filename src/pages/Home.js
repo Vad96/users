@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { _ } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUsers, addUser, loadMoreUsers } from "../redux/actions/actions";
 import User from "../components/User";
+import getTime from "../helpers/getTime";
 
 function Home() {
   const { users, pickedUsers, usersCount } = useSelector(
@@ -17,6 +19,7 @@ function Home() {
   return (
     <main className="main">
       <div className="usersList">
+      {getTime()}
         {users.results &&
           users.results.map((user) => {
             return (
@@ -33,6 +36,7 @@ function Home() {
           })}
         <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
       </div>
+
       <div className="pickedUsers">
         {pickedUsers ? (
           pickedUsers.map((user) => {
