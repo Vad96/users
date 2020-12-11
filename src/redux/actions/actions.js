@@ -1,4 +1,4 @@
-import { ADD_USER, GET_USERS } from "../types/types";
+import { ADD_USER, GET_USERS, USERS_COUNT } from "../types/types";
 
 export function addUser(user) {
   return {
@@ -15,5 +15,12 @@ export function getUsers() {
       type: GET_USERS,
       payload: json,
     });
+  };
+}
+
+export function loadMoreUsers() {
+  return {
+    type: USERS_COUNT,
+    // payload: count,
   };
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUsers } from "../redux/actions/actions";
+import { getUsers, loadMoreUsers } from "../redux/actions/actions";
 import User from "../components/User";
 
 function Home() {
@@ -27,6 +27,7 @@ function Home() {
               </Link>
             );
           })}
+          <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
       </div>
     </main>
   );
