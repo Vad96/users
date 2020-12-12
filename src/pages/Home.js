@@ -57,14 +57,10 @@ function Home() {
                       {user.name.first} {user.name.last}
                     </div>
                   </Link>
+                  {user.addedTime && <div>Added: {user.addedTime}</div>}
 
-                  {/* {pickedUsers &&
-                    pickedUsers.filter((pickedUser) => {
-                      if (user.id.name == pickedUser.id.name) {
-                        return <div>hell</div>;
-                      }
-                    })} */}
                   <button
+                    disabled={user.followed ? user.followed : false}
                     onClick={() => {
                       dispatch(addUser({ ...user, added: getTime() }));
                       dispatch(followUser(user.name.first));
