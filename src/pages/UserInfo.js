@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 function UserInfo() {
   const { id } = useParams();
   const { users } = useSelector((state) => state.users);
-  const user = users.results.find((item) => item.id.name === id);
-//   console.log(user);
+  const user = users.find((item) => item.id.name === id);
+
   return (
     <main className="main">
       <ul>

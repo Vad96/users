@@ -1,5 +1,6 @@
 import {
   ADD_USER,
+  FOLLOW_USER,
   GET_USERS,
   USERS_COUNT,
   SHOW_LOADER,
@@ -11,6 +12,13 @@ export function addUser(user) {
   return {
     type: ADD_USER,
     payload: user,
+  };
+}
+
+export function followUser(name) {
+  return {
+    type: FOLLOW_USER,
+    payload: name,
   };
 }
 
@@ -33,7 +41,7 @@ export function getUsers(count) {
     const json = await response.json();
     dispatch({
       type: GET_USERS,
-      payload: json,
+      payload: json.results,
     });
     dispatch(hideLoader());
   };

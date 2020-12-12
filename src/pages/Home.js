@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { _ } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUsers, addUser, loadMoreUsers } from "../redux/actions/actions";
+import {
+  getUsers,
+  addUser,
+  followUser,
+  loadMoreUsers,
+} from "../redux/actions/actions";
 import User from "../components/User";
 import Search from "../components/Search";
 import getTime from "../helpers/getTime";
@@ -42,8 +47,8 @@ function Home() {
           Tab 2
         </button>
         <div className={activeTab === "1" ? "usersList" : "hideTab"}>
-          {users.results && !loading ? (
-            users.results.filter(searched(text)).map((user) => {
+          {users && !loading ? (
+            users.filter(searched(text)).map((user) => {
               return (
                 <div key={user.email}>
                   <Link to={`/user/${user.id.name}`}>
@@ -60,9 +65,10 @@ function Home() {
                       }
                     })} */}
                   <button
-                    onClick={() =>
-                      dispatch(addUser({ ...user, added: getTime() }))
-                    }
+                    onClick={() => {
+                      dispatch(addUser({ ...user, added: getTime() }));
+                      dispatch(followUser(user.name.first));
+                    }}
                   >
                     Add
                   </button>
