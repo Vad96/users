@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import getTime from "../helpers/getTime";
@@ -7,7 +7,7 @@ import getTime from "../helpers/getTime";
 function Header(props) {
   const [time, setTime] = useState("");
   const { pickedUsers } = useSelector((state) => state.users);
-  let history = useHistory();
+  const location = window.location.pathname.split("/");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,6 +21,9 @@ function Header(props) {
       Header
       <div>{time}</div>
       Users count: {pickedUsers && pickedUsers.length}
+      <div>
+        {location[1] && location[1] === "user" && <Link to="/">Home</Link>}
+      </div>
     </header>
   );
 }
