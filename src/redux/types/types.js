@@ -1,4 +1,5 @@
 export const GET_USERS = "GET_USERS";
+export const REQUEST_USERS = "REQUEST_USERS";
 export const ADD_USER = "ADD_USER";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const USERS_COUNT = "USERS_COUNT";
