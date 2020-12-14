@@ -9,20 +9,20 @@ function UserInfo() {
 
   return (
     <main className="main">
-      <ul>
-        <li>
-          <img src={user.picture.medium} alt={user.name.first} />
+      <ul className="user-info">
+        <li className="user-info-item">
+          <img src={user.picture.large} alt={user.name.first} />
         </li>
-        <li>
+        <li className="user-info-item">
           {user.name.first} {user.name.last}
         </li>
-        <li>{user.email}</li>
-        <li>
+        <li className="user-info-item">{user.email}</li>
+        <li className="user-info-item">
           {user.location.city}, {user.location.country}
         </li>
-        <li>{user.gender}</li>
-        <li>{new Date(user.dob.date).toDateString()}</li>
-        <li>phone: {user.phone}</li>
+        <li className="user-info-item">{user.gender}</li>
+        <li className="user-info-item">{new Date(user.dob.date).toDateString()}</li>
+        <li className="user-info-item">phone: {user.phone}</li>
       </ul>
     </main>
   );

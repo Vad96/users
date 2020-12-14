@@ -23,7 +23,10 @@ function Header(props) {
           &larr; Home
         </Link>
       )}
-      <div>{time}</div>
+      <div>
+        <strong>Current date: </strong>
+        {time}
+      </div>
       Users count: {pickedUsers && pickedUsers.length}
     </header>
   );
