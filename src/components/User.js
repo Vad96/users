@@ -1,10 +1,7 @@
-// import React from "react";
+import React from "react";
 
-// function User({user}) {
-//   return (<li>
-//     {user.name && <img src={user.picture.large} alt=""/>}
-//      <div>{user.name.first}</div>
-//   </li>)
-// }
+function User({ children }) {
+  return <ul>{children}</ul>;
+}
 
-// export default User;
+export default User;

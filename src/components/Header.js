@@ -18,12 +18,13 @@ function Header(props) {
 
   return (
     <header className="header">
-      Header
+      {location[1] && location[1] === "user" && (
+        <Link to="/" className="header-link">
+          &larr; Home
+        </Link>
+      )}
       <div>{time}</div>
       Users count: {pickedUsers && pickedUsers.length}
-      <div>
-        {location[1] && location[1] === "user" && <Link to="/">Home</Link>}
-      </div>
     </header>
   );
 }

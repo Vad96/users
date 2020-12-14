@@ -47,54 +47,58 @@ function Home() {
           Tab 2
         </button>
         <div className={activeTab === "1" ? "usersList" : "hideTab"}>
-          {users && !loading ? (
-            users.filter(searched(text)).map((user) => {
-              return (
-                <div key={user.email}>
-                  <Link to={`/user/${user.id.name}`}>
-                    <img src={user.picture.medium} alt={user.name.first} />
-                    <div>
-                      {user.name.first} {user.name.last}
-                    </div>
-                  </Link>
-                  {user.addedTime && <div>Added: {user.addedTime}</div>}
+          <User>
+            {users && !loading ? (
+              users.filter(searched(text)).map((user) => {
+                return (
+                  <li key={user.email}>
+                    <Link to={`/user/${user.id.name}`}>
+                      <img src={user.picture.medium} alt={user.name.first} />
+                      <div>
+                        {user.name.first} {user.name.last}
+                      </div>
+                    </Link>
+                    {user.addedTime && <div>Added: {user.addedTime}</div>}
 
-                  <button
-                    disabled={user.followed ? user.followed : false}
-                    onClick={() => {
-                      dispatch(addUser({ ...user, added: getTime() }));
-                      dispatch(followUser(user.name.first));
-                    }}
-                  >
-                    Add
-                  </button>
-                </div>
-              );
-            })
-          ) : (
-            <div>loading...</div>
-          )}
+                    <button
+                      disabled={user.followed ? user.followed : false}
+                      onClick={() => {
+                        dispatch(addUser({ ...user, added: getTime() }));
+                        dispatch(followUser(user.name.first));
+                      }}
+                    >
+                      Add
+                    </button>
+                  </li>
+                );
+              })
+            ) : (
+              <div>loading...</div>
+            )}
+          </User>
           <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
         </div>
 
         <div className={activeTab === "2" ? "pickedUsers" : "hideTab"}>
-          {pickedUsers ? (
-            pickedUsers.filter(searched(text)).map((user) => {
-              return (
-                <div key={user.email}>
-                  <Link to={`/user/${user.id.name}`}>
-                    <img src={user.picture.medium} alt={user.name.first} />
-                    <div>
-                      {user.name.first} {user.name.last}
-                    </div>
-                  </Link>
-                  <div>Added: {user.added}</div>
-                </div>
-              );
-            })
-          ) : (
-            <div>No users yet...</div>
-          )}
+          <User>
+            {pickedUsers ? (
+              pickedUsers.filter(searched(text)).map((user) => {
+                return (
+                  <li key={user.email}>
+                    <Link to={`/user/${user.id.name}`}>
+                      <img src={user.picture.medium} alt={user.name.first} />
+                      <div>
+                        {user.name.first} {user.name.last}
+                      </div>
+                    </Link>
+                    <div>Added: {user.added}</div>
+                  </li>
+                );
+              })
+            ) : (
+              <div>No users yet...</div>
+            )}
+          </User>
         </div>
       </main>
     </>
