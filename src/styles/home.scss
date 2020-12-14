@@ -8,10 +8,16 @@
   cursor: pointer;
   margin-top: 8px;
   margin-bottom: 4px;
+  border-radius: 5px;
 }
 
 .main {
   flex: 1 0 auto;
+  padding: 0 8px;
+}
+
+.wrapper {
+    position: relative;
 }
 
 .usersList {
@@ -42,7 +48,7 @@
 
   &-button {
     @include user-button;
-    background-color: #2c2e31;
+    background: #2c2e31;
     &-followed {
       @include user-button;
       background: #c8c8c8;
@@ -51,6 +57,20 @@
   }
 }
 
+.tab {
+  @include user-button;
+  background: #380000;
+  margin-right: 10px;
+}
+
 .hideTab {
   display: none;
+}
+
+.button-load-more {
+  @include user-button;
+  background: #2c2e31;
+  padding: 12px 28px;
+  position: sticky;
+  left: 50%;
 }

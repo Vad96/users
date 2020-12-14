@@ -33,41 +33,52 @@ function Home() {
       <Search />
       <main className="main">
         <button
+          className="tab"
           style={{ display: "inline-block" }}
           type="button"
           onClick={() => setActiveTab("1")}
         >
-          Tab 1
+          Users
         </button>
         <button
+          className="tab"
           style={{ display: "inline-block" }}
           type="button"
           onClick={() => setActiveTab("2")}
         >
-          Tab 2
+          Followed users
         </button>
-        <div className={activeTab !== "1" && "hideTab"}>
+        <div className={activeTab !== "1" ? "hideTab" : "wrapper"}>
           <User>
             {users && !loading ? (
               users.filter(searched(text)).map((user) => {
                 return (
                   <li key={user.email} className="user">
                     <Link to={`/user/${user.id.name}`}>
-                      <img src={user.picture.large} alt={user.name.first} className="user-image"/>
+                      <img
+                        src={user.picture.large}
+                        alt={user.name.first}
+                        className="user-image"
+                      />
                       <div className="user-name">
                         {user.name.first} {user.name.last}
                       </div>
                     </Link>
-                    {user.addedTime && <div className="user-time">Added: {user.addedTime}</div>}
+                    {user.addedTime && (
+                      <div className="user-time">Added: {user.addedTime}</div>
+                    )}
 
-                    <button className={user.followed ? "user-button-followed" : "user-button"}
+                    <button
+                      className={
+                        user.followed ? "user-button-followed" : "user-button"
+                      }
                       disabled={user.followed ? user.followed : false}
                       onClick={() => {
                         dispatch(addUser({ ...user, added: getTime() }));
                         dispatch(followUser(user.name.first));
                       }}
                     >
-                    {user.followed ? "Added" : "Add"}
+                      {user.followed ? "Added" : "Add"}
                     </button>
                   </li>
                 );
@@ -76,7 +87,12 @@ function Home() {
               <div>loading...</div>
             )}
           </User>
-          <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
+          <button
+            onClick={() => dispatch(loadMoreUsers())}
+            className="button-load-more"
+          >
+            Load more
+          </button>
         </div>
 
         <div className={activeTab !== "2" && "hideTab"}>
