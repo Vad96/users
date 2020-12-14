@@ -46,28 +46,28 @@ function Home() {
         >
           Tab 2
         </button>
-        <div className={activeTab === "1" ? "usersList" : "hideTab"}>
+        <div className={activeTab !== "1" && "hideTab"}>
           <User>
             {users && !loading ? (
               users.filter(searched(text)).map((user) => {
                 return (
-                  <li key={user.email}>
+                  <li key={user.email} className="user">
                     <Link to={`/user/${user.id.name}`}>
-                      <img src={user.picture.medium} alt={user.name.first} />
-                      <div>
+                      <img src={user.picture.large} alt={user.name.first} className="user-image"/>
+                      <div className="user-name">
                         {user.name.first} {user.name.last}
                       </div>
                     </Link>
-                    {user.addedTime && <div>Added: {user.addedTime}</div>}
+                    {user.addedTime && <div className="user-time">Added: {user.addedTime}</div>}
 
-                    <button
+                    <button className={user.followed ? "user-button-followed" : "user-button"}
                       disabled={user.followed ? user.followed : false}
                       onClick={() => {
                         dispatch(addUser({ ...user, added: getTime() }));
                         dispatch(followUser(user.name.first));
                       }}
                     >
-                      Add
+                    {user.followed ? "Added" : "Add"}
                     </button>
                   </li>
                 );
@@ -79,15 +79,15 @@ function Home() {
           <button onClick={() => dispatch(loadMoreUsers())}>Load more</button>
         </div>
 
-        <div className={activeTab === "2" ? "pickedUsers" : "hideTab"}>
+        <div className={activeTab !== "2" && "hideTab"}>
           <User>
             {pickedUsers ? (
               pickedUsers.filter(searched(text)).map((user) => {
                 return (
-                  <li key={user.email}>
+                  <li key={user.email} className="user">
                     <Link to={`/user/${user.id.name}`}>
-                      <img src={user.picture.medium} alt={user.name.first} />
-                      <div>
+                      <img src={user.picture.large} alt={user.name.first} />
+                      <div className="user-name">
                         {user.name.first} {user.name.last}
                       </div>
                     </Link>

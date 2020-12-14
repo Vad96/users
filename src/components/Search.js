@@ -12,6 +12,7 @@ const Search = () => {
 
   return (
     <input
+      className="search"
       onChange={handleChange}
       type="search"
       value={text}

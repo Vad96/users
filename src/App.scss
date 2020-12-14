@@ -21,6 +21,7 @@ body {
   min-height: 100%;
 }
 
-@import "./styles//header";
+@import "./styles/header";
+@import "./styles/search";
+@import "./styles/home";
 @import "./styles/footer";
-@import "./styles//home";
