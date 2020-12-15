@@ -25,7 +25,7 @@ function Home() {
     `${user.name.first}${user.name.last}`.toLowerCase().includes(text);
 
   useEffect(() => {
-    dispatch(getUsers(usersCount));
+    dispatch(getUsers());
   }, [usersCount]);
 
   return (

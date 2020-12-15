@@ -34,9 +34,10 @@ export function hideLoader() {
   };
 }
 
-export function getUsers(count) {
-  return async (dispatch) => {
+export function getUsers() {
+  return async (dispatch, getState) => {
     dispatch(showLoader());
+    const count = getState().users.usersCount;
     const response = await fetch(`https://randomuser.me/api/?results=${count}`);
     const json = await response.json();
     dispatch({
