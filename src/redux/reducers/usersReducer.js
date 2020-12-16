@@ -1,7 +1,7 @@
-import { GET_USERS, ADD_USER, FOLLOW_USER, USERS_COUNT } from "../types/types";
+import { GET_USERS, ADD_USER, FOLLOW_USER } from "../types/types";
 import getTime from '../../helpers/getTime';
 
-const initialState = { users: [], pickedUsers: [], usersCount: 20 };
+const initialState = { users: [], pickedUsers: [] };
 
 export function usersReducer(state = initialState, action) {
   switch (action.type) {

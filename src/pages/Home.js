@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { _ } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   getUsers,
   addUser,
-  followUser,
-  loadMoreUsers,
+  followUser
 } from "../redux/actions/actions";
 import User from "../components/User";
 import Search from "../components/Search";
@@ -14,10 +12,9 @@ import getTime from "../helpers/getTime";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("1");
-  const { users, pickedUsers, usersCount } = useSelector(
+  const { users, pickedUsers } = useSelector(
     (state) => state.users
   );
-  const { loading } = useSelector((state) => state.loading);
   const { text } = useSelector((state) => state.text);
   const dispatch = useDispatch();
 
