@@ -13,10 +13,8 @@ function* sagaWorker() {
   yield put(hideLoader());
 }
 
-const count = 20;
-
 async function fetchUsers() {
-  const response = await fetch(`https://randomuser.me/api/?results=${count}`);
+  const response = await fetch(`https://randomuser.me/api/?results=20`);
   const json = await response.json();
   return json.results;
 }

@@ -6,7 +6,7 @@ const initialState = { users: [], pickedUsers: [], usersCount: 20 };
 export function usersReducer(state = initialState, action) {
   switch (action.type) {
     case GET_USERS:
-      return { ...state, users: action.payload };
+      return { ...state, users: [...state.users, ...action.payload] };
     case FOLLOW_USER:
         const followedUser = state.users.find((user) => user.name.first === action.payload);
         followedUser.followed = true;
