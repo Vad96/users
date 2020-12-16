@@ -39,23 +39,6 @@ export function getUsers() {
   return {
     type: REQUEST_USERS,
   };
-  //   return async (dispatch, getState) => {
-  //     dispatch(showLoader());
-  //     const count = getState().users.usersCount;
-  //     const response = await fetch(`https://randomuser.me/api/?results=${count}`);
-  //     const json = await response.json();
-  //     dispatch({
-  //       type: GET_USERS,
-  //       payload: json.results,
-  //     });
-  //     dispatch(hideLoader());
-  //   };
-}
-
-export function loadMoreUsers() {
-  return {
-    type: USERS_COUNT,
-  };
 }
 
 export function search(query) {

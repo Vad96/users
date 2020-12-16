@@ -17,8 +17,6 @@ export function usersReducer(state = initialState, action) {
         ...state,
         pickedUsers: state.pickedUsers.concat([action.payload]),
       };
-    case USERS_COUNT:
-      return { ...state, usersCount: state.usersCount + 20 };
     default:
       return state;
   }

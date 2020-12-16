@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getUsers());
-  }, [usersCount]);
+  }, []);
 
   return (
     <>
@@ -50,7 +50,7 @@ function Home() {
         </button>
         <div className={activeTab !== "1" ? "hideTab" : "wrapper"}>
           <User>
-            {users && !loading ? (
+            {users ? (
               users.filter(searched(text)).map((user) => {
                 return (
                   <li key={user.email} className="user">
@@ -88,7 +88,7 @@ function Home() {
             )}
           </User>
           <button
-            onClick={() => dispatch(loadMoreUsers())}
+            onClick={() => dispatch(getUsers())}
             className="button-load-more"
           >
             Load more
