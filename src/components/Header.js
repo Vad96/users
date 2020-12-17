@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import getTime from "../helpers/getTime";
 
 function Header(props) {

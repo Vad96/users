@@ -16,7 +16,6 @@ const Search = () => {
       onChange={handleChange}
       type="search"
       value={text}
-      className="search"
       placeholder="Search"
     />
   );

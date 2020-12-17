@@ -23,7 +23,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -92,7 +92,7 @@ function Home() {
           </button>
         </div>
 
-        <div className={activeTab !== "2" && "hideTab"}>
+        <div className={activeTab !== "2" ? "hideTab" : "showTab"}>
           <User>
             {pickedUsers ? (
               pickedUsers.filter(searched(text)).map((user) => {
