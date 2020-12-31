@@ -1,3 +1,11 @@
 {
-  "date": "Current date"
+  "date": "Current date",
+  "count": "Users count",
+  "search": "Search",
+  "users": "Users",
+  "followed": "Followed users",
+  "added": "Added",
+  "add": "Add",
+  "load": "Load more",
+  "home": "Home"
 }

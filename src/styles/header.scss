@@ -10,3 +10,16 @@
     color: #ffffff;
   }
 }
+
+.langBtn {
+  border: none;
+  color: #ffffff;
+  background: none;
+  font-weight: bold;
+  margin-left: 8px;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    color: wheat;
+  }
+}

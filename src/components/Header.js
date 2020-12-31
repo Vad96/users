@@ -9,7 +9,7 @@ function Header(props) {
   const { pickedUsers } = useSelector((state) => state.users);
   const location = window.location.pathname.split("/");
   const { t, i18n } = useTranslation();
- 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(getTime());
@@ -19,27 +19,30 @@ function Header(props) {
 
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
-    console.log(lang)
   };
 
   return (
     <header className="header">
       {location[1] && location[1] === "user" && (
         <Link to="/" className="header-link">
-          &larr; Home
+          &larr; {t("home")}
         </Link>
       )}
       <div>
-        <strong>{t('date')}: </strong>
+        <strong>{t("date")}: </strong>
         {time}
       </div>
+      {t("count")}: {pickedUsers && pickedUsers.length}
       <div>
-        <button onClick={() => setLanguage("en")}>en</button>
-        <button onClick={() => setLanguage("uk")}>uk</button>
+        <button className="langBtn" onClick={() => setLanguage("en")}>
+          en
+        </button>
+        <button className="langBtn" onClick={() => setLanguage("uk")}>
+          uk
+        </button>
       </div>
-      Users count: {pickedUsers && pickedUsers.length}
     </header>
   );
 }
- 
+
 export default Header;

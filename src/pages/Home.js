@@ -1,22 +1,18 @@
-import React, { useState, useEffect, lazy } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  getUsers,
-  addUser,
-  followUser
-} from "../redux/actions/actions";
+import { useTranslation } from "react-i18next";
+import { getUsers, addUser, followUser } from "../redux/actions/actions";
 import User from "../components/User";
 import Search from "../components/Search";
 import getTime from "../helpers/getTime";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("1");
-  const { users, pickedUsers } = useSelector(
-    (state) => state.users
-  );
+  const { users, pickedUsers } = useSelector((state) => state.users);
   const { text } = useSelector((state) => state.text);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const searched = (text) => (user) =>
     `${user.name.first}${user.name.last}`.toLowerCase().includes(text);
@@ -35,7 +31,7 @@ function Home() {
           type="button"
           onClick={() => setActiveTab("1")}
         >
-          Users
+          {t("users")}
         </button>
         <button
           className="tab"
@@ -43,7 +39,7 @@ function Home() {
           type="button"
           onClick={() => setActiveTab("2")}
         >
-          Followed users
+          {t("followed")}
         </button>
         <div className={activeTab !== "1" ? "hideTab" : "wrapper"}>
           <User>
@@ -75,7 +71,7 @@ function Home() {
                         dispatch(followUser(user.name.first));
                       }}
                     >
-                      {user.followed ? "Added" : "Add"}
+                      {user.followed ? t("added") : t("add")}
                     </button>
                   </li>
                 );
@@ -88,13 +84,13 @@ function Home() {
             onClick={() => dispatch(getUsers())}
             className="button-load-more"
           >
-            Load more
+            {t("load")}
           </button>
         </div>
 
         <div className={activeTab !== "2" ? "hideTab" : "showTab"}>
           <User>
-            {pickedUsers ? (
+            {pickedUsers.length > 0 ? (
               pickedUsers.filter(searched(text)).map((user) => {
                 return (
                   <li key={user.email} className="user">
@@ -104,7 +100,9 @@ function Home() {
                         {user.name.first} {user.name.last}
                       </div>
                     </Link>
-                    <div>Added: {user.added}</div>
+                    <div>
+                      {t("added")}: {user.added}
+                    </div>
                   </li>
                 );
               })
