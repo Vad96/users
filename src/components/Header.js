@@ -30,7 +30,7 @@ function Header(props) {
         </Link>
       )}
       <div>
-        <strong>{t('date.1')}: </strong>
+        <strong>{t('date')}: </strong>
         {time}
       </div>
       <div>
@@ -41,5 +41,5 @@ function Header(props) {
     </header>
   );
 }
-
+ 
 export default Header;

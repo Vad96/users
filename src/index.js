@@ -24,9 +24,8 @@ saga.run(sagaWatcher);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
         <App />
-      </Suspense>
+
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
