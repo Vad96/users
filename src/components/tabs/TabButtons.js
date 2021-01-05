@@ -1,6 +1,7 @@
 import React from "react";
 
 function TabButtons({ buttons, changeTab, activeTab }) {
+
   return (
     <div className="tab-buttons">
       {buttons.map((button, i) => {
