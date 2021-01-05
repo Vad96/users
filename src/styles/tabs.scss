@@ -1,0 +1,19 @@
+.tab-buttons {
+  margin-bottom: 50px;
+}
+
+button {
+  margin-right: 15px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all ease-in-out 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.active {
+  border-bottom: 2px solid #42b3f4;
+
+  color: black;
+}
