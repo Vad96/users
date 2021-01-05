@@ -1,11 +1,5 @@
-import React from 'react';
+import React from "react";
 
-function Tab({children}){
-  return(
-    <React.Fragment>
-      {children}
-    </React.Fragment>
-  )
-}
+const Tab = ({ children }) => <>{children}</>;
 
 export default Tab;

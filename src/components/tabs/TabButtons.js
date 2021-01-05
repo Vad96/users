@@ -7,7 +7,7 @@ function TabButtons({ buttons, changeTab, activeTab }) {
         return (
           <button
             key={i}
-            className={button === activeTab ? "active" : ""}
+            className={`${button === activeTab ? "tab-active" : ""} tab-button`}
             onClick={() => changeTab(button)}
           >
             {button}

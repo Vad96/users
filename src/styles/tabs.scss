@@ -1,8 +1,8 @@
 .tab-buttons {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
-button {
+.tab-button {
   margin-right: 15px;
   background: transparent;
   border: none;
@@ -12,8 +12,8 @@ button {
   transition: all ease-in-out 0.2s;
   border-bottom: 2px solid transparent;
 }
-.active {
-  border-bottom: 2px solid #42b3f4;
 
+.tab-active {
+  border-bottom: 2px solid #42b3f4;
   color: black;
 }
