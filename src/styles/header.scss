@@ -20,6 +20,11 @@
   outline: none;
   cursor: pointer;
   &:hover {
-    color: wheat;
+    color: gray;
   }
+}
+
+.activeLang {
+  @extend .langBtn;
+  color: bisque;
 }

@@ -34,10 +34,16 @@ function Header(props) {
       </div>
       {t("count")}: {pickedUsers && pickedUsers.length}
       <div>
-        <button className="langBtn" onClick={() => setLanguage("en")}>
+        <button
+          className={i18n.language === "en" ? "activeLang" : "langBtn"}
+          onClick={() => setLanguage("en")}
+        >
           en
         </button>
-        <button className="langBtn" onClick={() => setLanguage("uk")}>
+        <button
+          className={i18n.language === "uk" ? "activeLang" : "langBtn"}
+          onClick={() => setLanguage("uk")}
+        >
           uk
         </button>
       </div>
